@@ -1,0 +1,45 @@
+[gd_scene load_steps=5 format=1]
+
+[ext_resource path="res://CubeScript.gd" type="Script" id=1]
+[ext_resource path="res://Sprites/Cube5.png" type="Texture" id=2]
+[ext_resource path="res://CubePress.gd" type="Script" id=3]
+
+[sub_resource type="RectangleShape2D" id=1]
+
+custom_solver_bias = 0.0
+extents = Vector2( 24.8218, 38.1538 )
+
+[node name="Cube" type="Node"]
+
+script/script = ExtResource( 1 )
+CubeColor = "Pink"
+
+[node name="Position2D" type="Position2D" parent="."]
+
+[node name="Sprite" type="Sprite" parent="Position2D"]
+
+transform/scale = Vector2( 0.15, 0.15 )
+texture = ExtResource( 2 )
+
+[node name="Area2D" type="Area2D" parent="Position2D"]
+
+input/pickable = true
+shapes/0/shape = SubResource( 1 )
+shapes/0/transform = Matrix32( 1.60233, 0, 0, 1.59986, 1.52991, -0.00964927 )
+shapes/0/trigger = false
+gravity_vec = Vector2( 0, 1 )
+gravity = 98.0
+linear_damp = 0.1
+angular_damp = 1.0
+script/script = ExtResource( 3 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Position2D/Area2D"]
+
+visibility/visible = false
+transform/pos = Vector2( 1.52991, -0.00964927 )
+transform/scale = Vector2( 1.60233, 1.59986 )
+shape = SubResource( 1 )
+trigger = false
+_update_shape_index = 0
+
+

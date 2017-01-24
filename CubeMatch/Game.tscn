@@ -1,0 +1,165 @@
+[gd_scene load_steps=7 format=1]
+
+[ext_resource path="res://GameManager.gd" type="Script" id=1]
+[ext_resource path="res://Fonts/Chewy.fnt" type="BitmapFont" id=2]
+[ext_resource path="res://Sounds/Correct.smp" type="Sample" id=3]
+[ext_resource path="res://Sounds/Wrong.smp" type="Sample" id=4]
+[ext_resource path="res://CubeHolder.tscn" type="PackedScene" id=5]
+
+[sub_resource type="SampleLibrary" id=1]
+
+samples/Correct = { "db":0.0, "pitch":1.0, "sample":ExtResource( 3 ) }
+samples/Wrong = { "db":0.0, "pitch":1.0, "sample":ExtResource( 4 ) }
+
+[node name="Game" type="Node"]
+
+[node name="GameManagerNode" type="Node" parent="."]
+
+script/script = ExtResource( 1 )
+
+[node name="ScoreLabel" type="Label" parent="GameManagerNode"]
+
+focus/ignore_mouse = true
+focus/stop_mouse = true
+size_flags/horizontal = 2
+size_flags/vertical = 0
+margin/left = -100.0
+margin/top = -410.0
+margin/right = 102.0
+margin/bottom = -341.0
+custom_fonts/font = ExtResource( 2 )
+text = "Score: 0"
+align = 1
+valign = 1
+percent_visible = 1.0
+lines_skipped = 0
+max_lines_visible = -1
+
+[node name="TimeLabel" type="Label" parent="GameManagerNode"]
+
+focus/ignore_mouse = true
+focus/stop_mouse = true
+size_flags/horizontal = 2
+size_flags/vertical = 0
+margin/left = -105.0
+margin/top = 400.0
+margin/right = 103.0
+margin/bottom = 469.0
+custom_fonts/font = ExtResource( 2 )
+text = "Time: 30"
+align = 1
+valign = 1
+percent_visible = 1.0
+lines_skipped = 0
+max_lines_visible = -1
+
+[node name="HighscoreLabel" type="Label" parent="GameManagerNode"]
+
+focus/ignore_mouse = true
+focus/stop_mouse = true
+size_flags/horizontal = 2
+size_flags/vertical = 0
+margin/left = -155.0
+margin/top = -500.0
+margin/right = 160.0
+margin/bottom = -417.0
+custom_fonts/font = ExtResource( 2 )
+text = "Highscore: 0"
+align = 1
+valign = 1
+percent_visible = 1.0
+lines_skipped = 0
+max_lines_visible = -1
+
+[node name="Sound" type="SamplePlayer2D" parent="GameManagerNode"]
+
+params/volume_db = 0.0
+params/pitch_scale = 1.0
+params/attenuation/min_distance = 1.0
+params/attenuation/max_distance = 2048.0
+params/attenuation/distance_exp = 1.0
+config/polyphony = 1
+config/samples = SubResource( 1 )
+config/pitch_random = 0.0
+
+[node name="Holder" type="Node" parent="."]
+
+[node name="CubeHolderMid" parent="Holder" instance=ExtResource( 5 )]
+
+editor/display_folded = true
+
+[node name="CubeHolder1" parent="Holder" instance=ExtResource( 5 )]
+
+editor/display_folded = true
+
+[node name="Position2D" parent="Holder/CubeHolder1"]
+
+transform/pos = Vector2( 0, -200 )
+
+[node name="CubeHolder2" parent="Holder" instance=ExtResource( 5 )]
+
+editor/display_folded = true
+
+[node name="Position2D" parent="Holder/CubeHolder2"]
+
+transform/pos = Vector2( 175, -125 )
+
+[node name="CubeHolder3" parent="Holder" instance=ExtResource( 5 )]
+
+editor/display_folded = true
+
+[node name="Position2D" parent="Holder/CubeHolder3"]
+
+transform/pos = Vector2( 175, 125 )
+
+[node name="CubeHolder4" parent="Holder" instance=ExtResource( 5 )]
+
+editor/display_folded = true
+
+[node name="Position2D" parent="Holder/CubeHolder4"]
+
+transform/pos = Vector2( 0, 200 )
+
+[node name="CubeHolder5" parent="Holder" instance=ExtResource( 5 )]
+
+editor/display_folded = true
+
+[node name="Position2D" parent="Holder/CubeHolder5"]
+
+transform/pos = Vector2( -175, 125 )
+
+[node name="CubeHolder6" parent="Holder" instance=ExtResource( 5 )]
+
+editor/display_folded = true
+
+[node name="Position2D" parent="Holder/CubeHolder6"]
+
+transform/pos = Vector2( -175, -125 )
+
+[node name="Camera2D" type="Camera2D" parent="."]
+
+anchor_mode = 1
+rotating = false
+current = true
+zoom = Vector2( 1, 1 )
+limit/left = -10000000
+limit/top = -10000000
+limit/right = 10000000
+limit/bottom = 10000000
+drag_margin/h_enabled = true
+drag_margin/v_enabled = true
+smoothing/enable = false
+smoothing/speed = 5.0
+drag_margin/left = 0.2
+drag_margin/top = 0.2
+drag_margin/right = 0.2
+drag_margin/bottom = 0.2
+
+
+[editable path="Holder/CubeHolderMid"]
+[editable path="Holder/CubeHolder1"]
+[editable path="Holder/CubeHolder2"]
+[editable path="Holder/CubeHolder3"]
+[editable path="Holder/CubeHolder4"]
+[editable path="Holder/CubeHolder5"]
+[editable path="Holder/CubeHolder6"]
